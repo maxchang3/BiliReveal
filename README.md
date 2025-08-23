@@ -23,7 +23,7 @@
 - **浏览器**：最新版 Chrome / Edge / Firefox / Safari 等支持 [扩展 API](https://developer.chrome.google.cn/docs/extensions) 的现代浏览器。
 - **脚本管理器**：推荐  
   - Chrome/Edge/Firefox： [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)  
-  - Safari： [Stay](https://github.com/shenruisi/Stay)（主要免费）或 [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)（付费）。
+  - Safari： [Stay](https://github.com/shenruisi/Stay)（主要功能免费）或 [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)（付费）。
 
 > [!TIP]
 > 请确保所使用的脚本管理器支持 [`unsafeWindow`](https://www.tampermonkey.net/documentation.php#api:unsafeWindow)。
