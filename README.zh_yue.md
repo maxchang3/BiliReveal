@@ -11,7 +11,7 @@
 
 <img src="./assets/preview.png" width = "50%" align="right">
 
-喺 Bilibili 网页版评论区显示 IP 属地，支持<a href="#依家支持嘅场景">大部分场景</a>。
+喺 Bilibili 网页版显示 IP 属地，支持<a href="#依家支持嘅场景">大部分场景</a>。
 
 ## 安装方式
 

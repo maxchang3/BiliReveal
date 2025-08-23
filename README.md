@@ -11,7 +11,7 @@
 
 <img src="./assets/preview.png" width = "50%" align="right">
 
-在哔哩哔哩网页版评论区中显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
+在哔哩哔哩网页版中显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
 
 ## 安装方式
 
