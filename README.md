@@ -8,12 +8,42 @@
 ![Greasy Fork 总下载量](https://img.shields.io/greasyfork/dt/466815?style=flat-square&color=444)
 [![廣東話](https://img.shields.io/badge/文檔-廣東話-0078D4?style=flat-square)](README.zh_yue.md)
 
-![](https://img.shields.io/badge/安装方式:-777)
-[![使用 Greasy Fork 安装](https://img.shields.io/badge/Greasy_Fork-7D160D)](https://greasyfork.org/scripts/466815) [![使用 Github Release 安装](https://img.shields.io/badge/Github_Release-3D7D3F)](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilibili-web-show-ip-location.user.js)
 
 <img src="./assets/preview.png" width = "50%" align="right">
 
-在哔哩哔哩网页版大部分场景中显示 IP 属地，目前支持的场景有：
+在哔哩哔哩网页版评论区中显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
+
+## 安装方式
+
+- [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815) 
+- [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilibili-web-show-ip-location.user.js)
+
+## 使用环境
+
+- **浏览器**：最新版 Chrome / Edge / Firefox / Safari 等支持 [扩展 API](https://developer.chrome.google.cn/docs/extensions) 的现代浏览器。
+- **脚本管理器**：推荐  
+  - Chrome/Edge/Firefox： [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)  
+  - Safari： [Stay](https://github.com/shenruisi/Stay)（主要免费）或 [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)（付费）。
+
+> [!TIP]
+> 请确保所使用的脚本管理器支持 [`unsafeWindow`](https://www.tampermonkey.net/documentation.php#api:unsafeWindow)。
+
+
+## 常见问题
+
+- **为什么个人主页的 IP 属地没有显示？**
+  - 个人主页需要额外逻辑，已单独实现：
+    - [Greasy Fork](https://greasyfork.org/scripts/534807) 
+    - [Github](https://github.com/maxchang3/userscripts/blob/main/BiliRevealForSpace/README.md)
+
+- **为什么我的评论区没有显示 IP 属地？**
+  - 部分场景可能未做适配，请检查[是否支持](#目前支持的场景)该场景。
+  - 确认脚本最新版本并正常运行  
+  - Manifest V3 下可能需开启[开发者模式](https://www.tampermonkey.net/faq.php?locale=zh#Q209)  
+  - 关闭其他可能冲突的脚本  
+  - 注意：B 站上线 IP 属地前的评论不会显示  
+
+## 目前支持的场景
 
 - 视频（普通视频、番剧（影视）、收藏列表播放页）评论区
 - 话题评论区
@@ -27,21 +57,6 @@
 - 漫画详情页评论区
 
 > （未作特殊说明均支持新旧版）
-
-仅测试于 Chrome 113+ ([tampermonkey](https://github.com/Tampermonkey/tampermonkey)) / Safari 16.4+ ([Stay](https://github.com/shenruisi/Stay))。**需要使用支持 [unsafeWindow](https://www.tampermonkey.net/documentation.php#api:unsafeWindow) API 的脚本管理器**
-
-## 常见问题
-
-- **为什么个人主页的 IP 属地没有显示？**
-
-    - 由于个人主页 IP 属地需要使用 APP 接口，依赖于许多额外逻辑，目前单独实现了一个脚本，如有需要请前往 [Greasy Fork](https://greasyfork.org/scripts/534807) 或 [Github(maxchang3/userscripts)](https://github.com/maxchang3/userscripts/blob/main/BiliRevealForSpace/README.md) 安装。
-
-- **为什么我的评论区没有显示 IP 属地？**
-    - 请确定你所在的场景是否支持，脚本是否为最新版本，脚本是否正常运行。
-    - Manifest V3 以来可能需要开启[开发者模式](https://www.tampermonkey.net/faq.php?locale=zh#Q209)才能正常运行。
-    - 请关闭同页面内的其他相关脚本，排除脚本冲突的可能。
-    - B 站的 IP 属地功能上线之前的评论将不会显示 IP 属地。
-    - 排除以上情况后，可能是脚本逻辑失效，欢迎反馈。
 
 ## 原理
 
