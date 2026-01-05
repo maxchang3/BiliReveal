@@ -1,6 +1,6 @@
 import { hookBBComment, hookLit, observeAndInjectComments, serveNewComments } from '@/processors'
 import type { ArticleDetail } from '@/types/cv'
-import { isConditionTrue, isElementLoaded, Router } from '@/utils/'
+import { isConditionTrue, isElementLoaded, registerConfigMenus, Router } from '@/utils/'
 
 const router = new Router()
 
@@ -140,3 +140,5 @@ const { origin, pathname } = new URL(location.href)
 const urlWithoutQueryOrHash = `${origin}${pathname}`
 
 router.match(urlWithoutQueryOrHash)
+
+registerConfigMenus()
