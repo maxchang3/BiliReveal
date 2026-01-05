@@ -1,7 +1,7 @@
 {
   "name": "bilibili-web-show-ip-location",
   "type": "module",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "private": true,
   "scripts": {
     "dev": "vite",
