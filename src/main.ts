@@ -1,6 +1,6 @@
 import { hookBBComment, hookLit, observeAndInjectComments, serveNewComments } from '@/processors'
 import type { ArticleDetail } from '@/types/cv'
-import { isConditionTrue, isElementLoaded, registerConfigMenus, Router } from '@/utils/'
+import { isConditionTrue, isElementLoaded, Router, registerConfigMenus } from '@/utils/'
 
 const router = new Router()
 
