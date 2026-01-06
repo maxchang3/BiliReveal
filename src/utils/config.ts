@@ -13,12 +13,7 @@ export const registerConfigMenus = (): void => {
             '请输入新的位置替换规则（JSON格式的键值对，例如 {"旧字符串": "新字符串"}）：',
             currentRules
         )
-
-        if (!input) {
-            alert('替换规则未更改。')
-            return
-        }
-
+        if (!input) return
         // 验证 JSON 格式
         try {
             const parsed = JSON.parse(input)
