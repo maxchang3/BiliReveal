@@ -16,7 +16,7 @@
 ## 安装方式
 
 - [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815) 
-- [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilibili-web-show-ip-location.user.js)
+- [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
 
 ## 使用环境
 
