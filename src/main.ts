@@ -141,4 +141,4 @@ const urlWithoutQueryOrHash = `${origin}${pathname}`
 
 router.match(urlWithoutQueryOrHash)
 
-registerConfigMenus()
+if (!__FIRE_MONKEY__) registerConfigMenus()

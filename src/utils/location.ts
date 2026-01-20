@@ -19,7 +19,7 @@ export const parseReplacements = (rawJson?: string): ReplacementMap => {
     return new Map(Object.entries(parsed))
 }
 
-export const replacements = parseReplacements()
+export const replacements = (__FIRE_MONKEY__ ? undefined : parseReplacements())!
 
 const preprocessLocation = (location?: string): string | undefined => {
     if (!location || replacements.size === 0) return location
@@ -35,5 +35,6 @@ const preprocessLocation = (location?: string): string | undefined => {
 
 export const getLocationString = (replyItem?: Reply): string | undefined => {
     const locationString = replyItem?.reply_control?.location
+    if (__FIRE_MONKEY__) return locationString
     return preprocessLocation(locationString)
 }
