@@ -15,8 +15,18 @@
 
 ## 安装方式
 
-- [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815) 
+- [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815)
 - [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
+
+### Lite 版本
+
+对于一些上下文要求更严格的运行环境（如 FireMonkey），我们提供了 Lite 版本：
+
+- 移除了对 GM API 的使用（这意味着「文本替换」功能将不可用）
+- 额外添加了 `@inject-into page`（目前仅在 Firefox 下有效）
+- 更好地兼容对上下文要求严格的脚本管理器
+
+[从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
 
 ## 使用环境
 
