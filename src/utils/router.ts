@@ -16,7 +16,9 @@ export class Router {
     routes: Route[] = []
     serve(prefix: string | string[], action: RouteAction, constrait: RouteConstrait = {}) {
         if (Array.isArray(prefix)) {
-            prefix.forEach((p) => this.routes.push({ prefix: p, action, constrait }))
+            prefix.forEach((p) => {
+                this.routes.push({ prefix: p, action, constrait })
+            })
             return
         }
         this.routes.push({ prefix, action, constrait })
