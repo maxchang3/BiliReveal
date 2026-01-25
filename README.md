@@ -6,7 +6,6 @@
 # BiliReveal
 
 ![Greasy Fork 总下载量](https://img.shields.io/greasyfork/dt/466815?style=flat-square&color=444)
-[![廣東話](https://img.shields.io/badge/文檔-廣東話-0078D4?style=flat-square)](README.zh_yue.md)
 
 
 <img src="./assets/preview.png" width = "50%" align="right">
