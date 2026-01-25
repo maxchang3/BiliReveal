@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "pnpm build:normal && pnpm build:firemonkey",
     "build:normal": "tsc && vite build",
-    "build:firemonkey": "FIRE_MONKEY=true vite build",
+    "build:firemonkey": "LITE_VERSION=true vite build",
     "preview": "vite preview",
     "release": "bumpp",
     "typecheck": "tsc --noEmit",

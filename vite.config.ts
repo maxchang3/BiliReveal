@@ -3,12 +3,12 @@ import { defineConfig } from 'vite'
 import monkey from 'vite-plugin-monkey'
 import packageJson from './package.json'
 
-const FIRE_MONKEY = !!process.env.FIRE_MONKEY
+const LITE_VERSION = !!process.env.LITE_VERSION
 
 // https://vitejs.dev/config/
 export default defineConfig({
     define: {
-        __FIRE_MONKEY__: FIRE_MONKEY,
+        __LITE_VERSION__: LITE_VERSION,
     },
     resolve: {
         alias: [
@@ -22,7 +22,7 @@ export default defineConfig({
         monkey({
             entry: 'src/main.ts',
             userscript: {
-                name: 'BiliReveal - 哔哩哔哩网页版显示 IP 属地' + (FIRE_MONKEY ? ' (FireMonkey)' : ''),
+                name: 'BiliReveal - 哔哩哔哩网页版显示 IP 属地' + (LITE_VERSION ? ' (FireMonkey)' : ''),
                 icon: 'https://www.bilibili.com/favicon.ico',
                 namespace: 'http://zhangmaimai.com',
                 author: 'MaxChang3',
@@ -46,18 +46,18 @@ export default defineConfig({
                 license: 'MIT',
                 description:
                     '我不喜欢 IP 属地，但是你手机都显示了，为什么电脑不显示呢？在哔哩哔哩网页版大部分场景中显示 IP 属地。',
-                require: FIRE_MONKEY
+                require: LITE_VERSION
                     ? 'https://update.greasyfork.org/scripts/563333/1738147/Hook%20Vue3%20app%20-%20FireMonkey%20Compat.js'
                     : 'https://update.greasyfork.org/scripts/449444/1081400/Hook%20Vue3%20app.js',
             },
             build: {
-                fileName: (packageJson.name ?? 'monkey') + (FIRE_MONKEY ? '.firemonkey' : '') + '.user.js',
+                fileName: (packageJson.name ?? 'monkey') + (LITE_VERSION ? '.lite' : '') + '.user.js',
             },
             generate: ({ userscript }) =>
-                FIRE_MONKEY ? userscript.replace(/(\/\/ @grant)/, '// @inject-into  page\n$1') : userscript,
+                LITE_VERSION ? userscript.replace(/(\/\/ @grant)/, '// @inject-into  page\n$1') : userscript,
         }),
     ],
     build: {
-        emptyOutDir: !FIRE_MONKEY,
+        emptyOutDir: !LITE_VERSION,
     },
 })
