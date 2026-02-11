@@ -21,7 +21,7 @@ body:
     id: browser
     attributes:
       label: 浏览器
-      placeholder: Chome
+      placeholder: Chrome
     validations:
       required: true
   - type: input
