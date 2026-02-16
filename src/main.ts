@@ -17,7 +17,7 @@ router.serve(
 
 router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', observeAndInjectComments)
 
-router.serve(/** 拜年祭 */ 'https://www.bilibili.com/festival/', hookBBComment)
+router.serve(/** 拜年祭 */ 'https://www.bilibili.com/festival/', hookLit)
 
 router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
     observeAndInjectComments()
