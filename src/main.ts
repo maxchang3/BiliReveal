@@ -11,13 +11,13 @@ router.serve(
         /** 新版单独动态页 */ 'https://www.bilibili.com/opus/',
         /** 课程页 */ 'https://www.bilibili.com/cheese/play/',
         /** 话题页 */ 'https://www.bilibili.com/v/topic/detail',
+        /** 漫画详情页（无 IP 属地数据） */ 'https://manga.bilibili.com/detail/',
+        /** 节日（如：拜年祭） */ 'https://www.bilibili.com/festival/',
     ],
     hookLit
 )
 
 router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', observeAndInjectComments)
-
-router.serve(/** 拜年祭 */ 'https://www.bilibili.com/festival/', hookLit)
 
 router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
     observeAndInjectComments()
@@ -52,19 +52,7 @@ router.serve('https://www.bilibili.com/v/topic/detail/', () => serveNewComments(
 /**
  * 个人空间动态页
  */
-router.serve(
-    'https://space.bilibili.com/',
-    async () => {
-        const biliMainHeader = await isElementLoaded('#biliMainHeader')
-        const isFreshSpace = biliMainHeader?.tagName === 'HEADER'
-        if (isFreshSpace) {
-            hookLit()
-        } else {
-            serveNewComments('.bili-dyn-list__items')
-        }
-    },
-    { endsWith: 'dynamic' }
-)
+router.serve('https://space.bilibili.com/', hookLit, { endsWith: 'dynamic' })
 
 /**
  * 个人空间首页
@@ -86,7 +74,7 @@ router.serve('https://space.bilibili.com/', async () => {
         dynamicTab.addEventListener(
             'click',
             () => {
-                serveNewComments('.bili-dyn-list__items')
+                hookLit()
             },
             { once: true }
         )
@@ -130,11 +118,6 @@ router.serve('https://t.bilibili.com/', async () => {
  * 小黑屋
  */
 router.serve('https://www.bilibili.com/blackroom/ban/', () => hookBBComment({ blackroom: true }))
-
-/**
- * 漫画详情页
- */
-router.serve('https://manga.bilibili.com/detail/', observeAndInjectComments)
 
 const { origin, pathname } = new URL(location.href)
 const urlWithoutQueryOrHash = `${origin}${pathname}`
