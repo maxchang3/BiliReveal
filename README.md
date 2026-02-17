@@ -30,13 +30,16 @@
 
 <details>
 <summary>FireMonkey 等对上下文要求严格的脚本管理器</summary>
-- [从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
-- Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能将不可用），额外添加了 `@inject-into page`（脚本将直接完整注入网页，目前仅在 Firefox 下有效）
+
+[从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
+
+Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能将不可用），额外添加了 `@inject-into page`（脚本将直接完整注入网页，目前仅在 Firefox 下有效）
+
 </details>
 
 ## 配置选项
 
-### 文本替换
+### 文本替换（Lite 版本不支持）
 
 支持对 IP 属地文本进行自定义替换，以优化显示或适应国际化需求。典型应用场景包括去掉「IP 属地：」前缀，只展示地区名称。
 
