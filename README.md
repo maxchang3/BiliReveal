@@ -12,20 +12,6 @@
 
 在哔哩哔哩网页版中显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
 
-## 安装方式
-
-- [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815)
-- [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
-
-### Lite 版本
-
-为了更好地兼容对上下文要求严格的脚本管理器（如 FireMonkey），我们提供了 Lite 版本：
-
-- 移除了对 GM API 的使用（这意味着「文本替换」功能将不可用）
-- 额外添加了 `@inject-into page`（脚本将直接完整注入网页，目前仅在 Firefox 下有效）
-
-[从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
-
 ## 使用环境
 
 - **浏览器**：最新版 Chrome / Edge / Firefox / Safari 等支持 [扩展 API](https://developer.chrome.google.cn/docs/extensions) 的现代浏览器。
@@ -36,6 +22,17 @@
 > [!TIP]
 > 请确保所使用的脚本管理器支持 [`unsafeWindow`](https://www.tampermonkey.net/documentation.php#api:unsafeWindow)。
 
+## 安装方式
+
+主流用户脚本管理器（Tampermonkey、Violentmonkey、Stay 等）：
+- [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815)
+- [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
+
+<details>
+<summary>FireMonkey 等对上下文要求严格的脚本管理器</summary>
+- [从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
+- Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能将不可用），额外添加了 `@inject-into page`（脚本将直接完整注入网页，目前仅在 Firefox 下有效）
+</details>
 
 ## 配置选项
 
@@ -60,16 +57,15 @@
 ## 常见问题
 
 - **为什么个人主页的 IP 属地没有显示？**
-  - 个人主页需要额外逻辑，已单独实现：
-    - [Greasy Fork](https://greasyfork.org/scripts/534807) 
+  - 个人主页需要额外的逻辑处理，已单独实现：
+    - [Greasy Fork](https://greasyfork.org/scripts/534807)
     - [Github](https://github.com/maxchang3/userscripts/blob/main/BiliRevealForSpace/README.md)
 
-- **为什么我的评论区没有显示 IP 属地？**
-  - 部分场景可能未做适配，请检查[是否支持](#目前支持的场景)该场景。
-  - 确认脚本最新版本并正常运行  
-  - Manifest V3 下可能需开启[开发者模式](https://www.tampermonkey.net/faq.php?locale=zh#Q209)  
-  - 关闭其他可能冲突的脚本  
-  - 注意：B 站上线 IP 属地前的评论不会显示  
+-  **为什么我的评论区没有显示 IP 属地？**
+  - 注意：B 站上线 IP 属地功能前发布的评论不会显示。
+  - 部分场景可能未适配。请检查[是否支持](#目前支持的场景)该场景，并确认脚本已在当前页面激活。
+  - 请确保脚本为最新版本且运行正常。可尝试关闭其他可能冲突的脚本来排查问题。
+  - 如果您是首次使用用户脚本管理器，需要开启[「开发者模式」与「允许用户脚本」](https://www.tampermonkey.net/faq.php?locale=zh#Q209)。
 
 ## 目前支持的场景
 
