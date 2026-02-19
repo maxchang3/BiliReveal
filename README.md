@@ -10,21 +10,21 @@
 
 <img src="./assets/preview.png" width = "50%" align="right">
 
-在哔哩哔哩网页版中显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
+一个用户脚本，让哔哩哔哩网页版评论区也能显示 IP 属地，支持<a href="#目前支持的场景">大部分场景</a>。
 
 ## 使用环境
 
 - **浏览器**：最新版 Chrome / Edge / Firefox / Safari 等支持 [扩展 API](https://developer.chrome.google.cn/docs/extensions) 的现代浏览器。
-- **脚本管理器**：推荐  
+- **用户脚本管理器**：**推荐**  
   - Chrome/Edge/Firefox： [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)  
   - Safari： [Stay](https://github.com/shenruisi/Stay)（主要功能免费）或 [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)（付费）。
 
 > [!TIP]
-> 请确保所使用的脚本管理器支持 [`unsafeWindow`](https://www.tampermonkey.net/documentation.php#api:unsafeWindow)。
+> 如果你使用非推荐环境，请确保你的用户脚本管理器支持 [`unsafeWindow`](https://www.tampermonkey.net/documentation.php#api:unsafeWindow)。
 
 ## 安装方式
 
-主流用户脚本管理器（Tampermonkey、Violentmonkey、Stay 等）：
+推荐的用户脚本管理器（Tampermonkey、Violentmonkey、Stay 等）：
 - [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815)
 - [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
 
@@ -37,26 +37,6 @@ Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能�
 
 </details>
 
-## 配置选项
-
-### 文本替换（Lite 版本不支持）
-
-支持对 IP 属地文本进行自定义替换，以优化显示或适应国际化需求。典型应用场景包括去掉「IP 属地：」前缀，只展示地区名称。
-
-**使用方法：**
-
-1. 点击脚本管理器中的脚本菜单，选择 **「更新替换规则」**
-2. 在弹出的对话框中输入 JSON 格式的替换规则，例如：
-   ```json
-   {"IP属地：":""}
-   ```
-3. 点击确定后，页面将自动刷新并应用新规则
-
-**规则说明：**
-- 格式为 JSON 对象，键为原始文本，值为替换后的文本
-- 支持多个替换规则，按顺序执行
-- 替换会应用于所有显示的 IP 属地信息
-
 ## 常见问题
 
 - **为什么个人主页的 IP 属地没有显示？**
@@ -65,13 +45,15 @@ Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能�
     - [Github](https://github.com/maxchang3/userscripts/blob/main/BiliRevealForSpace/README.md)
 
 -  **为什么我的评论区没有显示 IP 属地？**
-   - 注意：B 站上线 IP 属地功能前发布的评论不会显示。
+   - 注意：在「[B 站上线 IP 属地功能](https://www.bilibili.com/read/cv17590180)」前发布的评论不会显示。
    - 部分场景可能未适配。请检查[是否支持](#目前支持的场景)该场景，并确认脚本已在当前页面激活。
    - 请确保脚本为最新版本且运行正常。可尝试关闭其他可能冲突的脚本来排查问题。
    - 如果您是首次使用用户脚本管理器，需要开启[「开发者模式」与「允许用户脚本」](https://www.tampermonkey.net/faq.php?locale=zh#Q209)。
 
 ## 目前支持的场景
 
+<details>
+<summary>点击展开完整列表</summary>
 - 视频（普通视频、番剧（影视）、收藏列表播放页）评论区
 - 话题评论区
 - 动态评论区
@@ -84,6 +66,32 @@ Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能�
 - 漫画详情页评论区
 
 > （未作特殊说明均支持新旧版）
+
+</details>
+
+## 配置选项
+
+### 文本替换
+
+支持对 **IP 属地文本** 进行自定义替换，用于优化展示效果或满足国际化需求。
+
+**使用步骤：**
+
+1. 打开脚本管理器菜单，点击 **「更新替换规则」**
+2. 在弹出的对话框中输入 JSON 格式的替换规则，例如：
+
+    去除「IP 属地：」前缀，仅显示地区名称，可以使用如下规则：
+
+   ```json
+   {"IP属地：": ""}
+   ```
+3. 点击确定后，页面会自动刷新并应用新规则
+
+**规则说明：**
+
+* 规则需为 JSON 对象：键表示原始文本，值表示替换后的文本
+* 支持配置多条规则，并按顺序依次执行
+* 所有页面中的 IP 属地信息都会应用这些替换规则
 
 ## 原理
 
