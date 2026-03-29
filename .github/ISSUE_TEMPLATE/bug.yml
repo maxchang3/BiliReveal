@@ -10,6 +10,13 @@ body:
         + 如无特殊情况，请使用**最新版本**的脚本。
         + 确保你的浏览器和用户脚本管理器是最新版本。
         + 请先查看[常见问题](https://github.com/maxchang3/Bilibili-Web-Show-IP-Location#常见问题)是否有解决方案。
+  - type: checkboxes
+    id: developer_mode
+    attributes:
+      label: 请确认您已满足以下条件：
+      options:
+        - label: 我已开启浏览器的 [开发者模式、允许用户脚本](https://www.tampermonkey.net/faq.php?locale=zh#Q208)
+          required: true
   - type: input
     id: version
     attributes:
