@@ -12,7 +12,7 @@ body:
           required: true
         - label: 「[B 站上线 IP 属地功能](https://www.bilibili.com/read/cv17590180)」之前发布的评论本身不会显示属地
           required: true
-        - label: 当前页面属于已支持的场景
+        - label: 当前页面属于[已支持的场景](https://github.com/maxchang3/BiliReveal#%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%9C%BA%E6%99%AF) (对于不支持的场景，请提交功能请求而非 BUG 反馈)
           required: true
         - label: 已更新到最新版本，并排查过其他脚本冲突
           required: true
