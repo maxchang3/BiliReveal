@@ -3,22 +3,21 @@ description: 反馈出现的问题
 title: '[BUG]: '
 labels: ["bug"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ##  提交问题前请先注意以下事项
-
-        + 注意：在「[B 站上线 IP 属地功能](https://www.bilibili.com/read/cv17590180)」前发布的评论不会显示。
-        + 部分场景可能未适配。请检查[是否支持](#目前支持的场景)该场景，并确认脚本已在当前页面激活。
-        + 请确保脚本为最新版本且运行正常。可尝试关闭其他可能冲突的脚本来排查问题。
-        + **仅提供简单反馈「无效」时，我们往往难以定位问题。建议尽量补充更多信息，方便我们复现和修复。若条件允许，可以打开开发者工具并重新加载页面，查看控制台（Console）中是否有与 BiliReveal / userscript 相关的报错信息。**
   - type: checkboxes
-    id: developer_mode
+    id: precheck
     attributes:
-      label: 请确认您已满足以下条件：
+      label: 我的问题已经排除以下情况：
       options:
-        - label: 我已开启浏览器的 [开发者模式、允许用户脚本](https://www.tampermonkey.net/faq.php?locale=zh#Q208)
+        - label: 已开启浏览器的 [开发者模式、允许用户脚本](https://www.tampermonkey.net/faq.php?locale=zh#Q208)，且脚本在当前页面正常生效
           required: true
+        - label: 「[B 站上线 IP 属地功能](https://www.bilibili.com/read/cv17590180)」之前发布的评论本身不会显示属地
+          required: true
+        - label: 当前页面属于已支持的场景
+          required: true
+        - label: 已更新到最新版本，并排查过其他脚本冲突
+          required: true
+        - label: 如有能力，请查看开发者工具 Console，确认是否存在 BiliReveal / userscript 报错，并分享相关信息或截图
+          required: false
   - type: input
     id: version
     attributes:
