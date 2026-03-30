@@ -47,8 +47,10 @@ export default defineConfig({
                 description:
                     '我不喜欢 IP 属地，但是你手机都显示了，为什么电脑不显示呢？在哔哩哔哩网页版大部分场景中显示 IP 属地。',
                 require: LITE_VERSION
-                    ? 'https://update.greasyfork.org/scripts/563333/1738147/Hook%20Vue3%20app%20-%20FireMonkey%20Compat.js'
-                    : 'https://update.greasyfork.org/scripts/449444/1081400/Hook%20Vue3%20app.js',
+                    ? // Hook Vue3 app - FireMonkey Compat
+                      'https://fastly.jsdelivr.net/gh/beak2825/greasyfork_archives/js_greasyfork/563333.js'
+                    : // Hook Vue3 app
+                      'https://fastly.jsdelivr.net/gh/beak2825/greasyfork_archives/js_greasyfork/449444.js',
             },
             build: {
                 fileName: (packageJson.name ?? 'monkey') + (LITE_VERSION ? '.lite' : '') + '.user.js',
