@@ -1,6 +1,6 @@
 import { patch } from './patch'
 
-type RouteAction = (...args: any[]) => void | Promise<void>
+type RouteAction = (url: string) => void | Promise<void>
 
 interface RouteConstrait {
     endsWith?: string
@@ -29,7 +29,7 @@ export class Router {
             if (!url.startsWith(prefix)) continue
             if (constrait.endsWith && !url.endsWith(constrait.endsWith)) continue
             patch()
-            action()
+            action(url)
             break
         }
     }

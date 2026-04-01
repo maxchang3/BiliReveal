@@ -1,6 +1,6 @@
-import { hookBBComment, hookLit, observeAndInjectComments, serveNewComments } from '@/processors'
-import type { ArticleDetail } from '@/types/cv'
-import { isConditionTrue, isElementLoaded, Router, registerConfigMenus } from '@/utils/'
+import { hookBBComment, hookLit, observeAndInjectComments } from '@/processors'
+import type { ReadViewInfo } from '@/types/cv'
+import { hookVue3App, isElementLoaded, Router, registerConfigMenus } from '@/utils/'
 
 const router = new Router()
 
@@ -18,27 +18,38 @@ router.serve(
     hookLit
 )
 
-router.serve(/** 活动话题页 */ 'https://www.bilibili.com/blackboard/feed-topic.html', hookBBComment)
+router.serve(/** 活动话题页 */ 'https://www.bilibili.com/blackboard/feed-topic.html', () => hookBBComment())
 
-router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', observeAndInjectComments)
-
-router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
-    hookLit()
-    const articleDetail = (await isElementLoaded('.article-detail')) as ArticleDetail
-    await isConditionTrue(() => {
-        // 等待 readViewInfo 加载完毕，后期可能改为 hook 方式
-        const readInfo = document.querySelector('.article-read-info')
-        return !!(readInfo && readInfo.lastElementChild?.textContent !== '--评论')
-    })
-    const publishText = articleDetail.querySelector('.publish-text')
-    if (!publishText || !articleDetail.__vue__?.readViewInfo?.location) return
-    publishText.innerHTML += `&nbsp;&nbsp;IP属地：${articleDetail.__vue__.readViewInfo.location}`
+router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', () => {
+    hookVue3App()
+    observeAndInjectComments()
 })
 
-/**
- * 话题页
- */
-router.serve('https://www.bilibili.com/v/topic/detail/', () => serveNewComments('.list-view'))
+router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async (url) => {
+    hookLit()
+
+    const cv = url.split('/').filter(Boolean).pop()?.replace('cv', '')
+    if (!cv) return
+
+    try {
+        const { data: viewinfo }: { data: ReadViewInfo } = await fetch(
+            `https://api.bilibili.com/x/article/viewinfo?id=${cv}`,
+            { credentials: 'include' }
+        ).then((res) => res.json())
+
+        if (!viewinfo?.location) return
+
+        const articleDetail = await isElementLoaded('.article-detail')
+        const publishText = articleDetail?.querySelector('.publish-text')
+        if (!publishText) return
+
+        const locationEl = document.createElement('span')
+        locationEl.textContent = `${viewinfo.location} · `
+        publishText.insertAdjacentElement('afterend', locationEl)
+    } catch (error) {
+        console.error('获取文章 IP 属地失败：', error)
+    }
+})
 
 /**
  * 个人空间动态页

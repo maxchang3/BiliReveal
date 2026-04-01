@@ -1,10 +1,4 @@
-export interface ArticleDetail extends HTMLDivElement {
-    __vue__?: {
-        readViewInfo?: ReadViewInfo
-    }
-}
-
-interface ReadViewInfo {
+export interface ReadViewInfo {
     total: number
     like: number
     attention: boolean
