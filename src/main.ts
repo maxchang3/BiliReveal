@@ -20,7 +20,7 @@ router.serve(
 router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', observeAndInjectComments)
 
 router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
-    observeAndInjectComments()
+    hookLit()
     const articleDetail = (await isElementLoaded('.article-detail')) as ArticleDetail
     await isConditionTrue(() => {
         // 等待 readViewInfo 加载完毕，后期可能改为 hook 方式
@@ -30,18 +30,6 @@ router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
     const publishText = articleDetail.querySelector('.publish-text')
     if (!publishText || !articleDetail.__vue__?.readViewInfo?.location) return
     publishText.innerHTML += `&nbsp;&nbsp;IP属地：${articleDetail.__vue__.readViewInfo.location}`
-})
-
-/**
- * 番剧播放页
- */
-router.serve('https://www.bilibili.com/bangumi/play/', () => {
-    const isNewBangumi = !!document.querySelector('meta[name=next-head-count]')
-    if (isNewBangumi) {
-        hookLit()
-    } else {
-        hookBBComment()
-    }
 })
 
 /**
