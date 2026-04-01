@@ -14,13 +14,15 @@ const injectBBComment = async (bbComment: bbComment, { blackroom }: InjectorOpti
         const [item] = args
         const result: string = Reflect.apply(target, thisArg, args)
         const replyTimeRegex = /<span class="reply-time">(.*?)<\/span>/
+        const location = getLocationString(item)
+        if (!location) return result
         if (blackroom) {
             const blackroomRegex = /<span class="time">(.*?)<\/span>/
-            return result.replace(blackroomRegex, `<span class="time">$1&nbsp;&nbsp;${getLocationString(item)}</span>`)
+            return result.replace(blackroomRegex, `<span class="time">$1&nbsp;&nbsp;${location}</span>`)
         }
         return result.replace(
             replyTimeRegex,
-            `<span class="reply-time">$1</span><span class="reply-location">${getLocationString(item)}</span>`
+            `<span class="reply-time">$1</span><span class="reply-location">${location}</span>`
         )
     }
     bbComment.prototype._createListCon = new Proxy(createListCon, {
