@@ -9,6 +9,7 @@ router.serve(
         /** 视频 */ 'https://www.bilibili.com/video/',
         /** 新列表 */ 'https://www.bilibili.com/list/',
         /** 新版单独动态页 */ 'https://www.bilibili.com/opus/',
+        /** 新番剧播放页 */ 'https://www.bilibili.com/bangumi/play/',
         /** 课程页 */ 'https://www.bilibili.com/cheese/play/',
         /** 话题页 */ 'https://www.bilibili.com/v/topic/detail',
         /** 漫画详情页（无 IP 属地数据） */ 'https://manga.bilibili.com/detail/',
