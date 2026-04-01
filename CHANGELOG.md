@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.12](https://github.com/maxchang3/BiliReveal/compare/v1.6.11...v1.6.12) (2026-04-01)
+
+
+### Bug Fixes
+
+* **hookBBComment:** 优化属地获取 ([343e39f](https://github.com/maxchang3/BiliReveal/commit/343e39f05e918a7f16153b3cd767d941ba6faf40))
+* 修复专栏评论区适配（使用 Lit 策略） ([9fcc2e3](https://github.com/maxchang3/BiliReveal/commit/9fcc2e3eb104aa44baae0af22c9fd30bac5d352a))
+* 拆分活动话题页逻辑（目前仍使用旧版评论区） ([1d7e59a](https://github.com/maxchang3/BiliReveal/commit/1d7e59adb712e194f4d93acfef2f5034fad165b6))
+
 ## v1.6.11
 
 ### 修复
