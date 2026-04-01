@@ -9,7 +9,6 @@
     "build:normal": "tsc && vite build",
     "build:firemonkey": "LITE_VERSION=true vite build",
     "preview": "vite preview",
-    "release": "bumpp",
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "lint:fix": "biome check --write ."
@@ -24,7 +23,6 @@
     "@biomejs/biome": "^2.3.11",
     "@maxchang/biome-config": "^0.1.7",
     "@types/node": "^25.0.3",
-    "bumpp": "^11.0.1",
     "nano-staged": "^0.9.0",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3",
