@@ -36,6 +36,9 @@ jobs:
           ref: ${{ needs.release-please.outputs.tag_name }}
 
       - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: true
 
       - uses: actions/setup-node@v4
         with:
