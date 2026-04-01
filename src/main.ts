@@ -17,6 +17,8 @@ router.serve(
     hookLit
 )
 
+router.serve(/** 活动话题页 */ 'https://www.bilibili.com/blackboard/feed-topic.html', hookBBComment)
+
 router.serve(/** 活动页 */ 'https://www.bilibili.com/blackboard/', observeAndInjectComments)
 
 router.serve(/** 专栏 */ 'https://www.bilibili.com/read/', async () => {
