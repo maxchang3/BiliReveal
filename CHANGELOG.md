@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/maxchang3/BiliReveal/compare/v2.0.0...v2.0.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* 活动页面尝试注入 bbComment ([60066d9](https://github.com/maxchang3/BiliReveal/commit/60066d9b2d51d0686abb9a463ec4691ff298fd9c))
+
 ## [2.0.0](https://github.com/maxchang3/BiliReveal/compare/v1.6.12...v2.0.0) (2026-05-05)
 
 
