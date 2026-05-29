@@ -2,15 +2,13 @@
 
 ## [2.1.0](https://github.com/maxchang3/BiliReveal/compare/v2.0.1...v2.1.0) (2026-05-29)
 
-
 ### Features
 
-* 支持 opus 专栏 IP 属地获取 ([ee501d8](https://github.com/maxchang3/BiliReveal/commit/ee501d80bd1c1ac22148e72a9dc9f13c28a117e1))
-
+- 支持 opus 专栏 IP 属地获取 ([ee501d8](https://github.com/maxchang3/BiliReveal/commit/ee501d80bd1c1ac22148e72a9dc9f13c28a117e1))
 
 ### Bug Fixes
 
-* update userscript name for Lite version ([3b5ecea](https://github.com/maxchang3/BiliReveal/commit/3b5ecea66a84d8159600f0da20be7d2588807040))
+- update userscript name for Lite version ([3b5ecea](https://github.com/maxchang3/BiliReveal/commit/3b5ecea66a84d8159600f0da20be7d2588807040))
 
 ## [2.0.1](https://github.com/maxchang3/BiliReveal/compare/v2.0.0...v2.0.1) (2026-05-06)
 
