@@ -50,6 +50,7 @@ export default defineConfig({
           'https://www.bilibili.com/read/*',
           'https://manga.bilibili.com/detail/*',
           'https://www.bilibili.com/v/topic/detail*',
+          'https://live.bilibili.com/*',
         ],
         'run-at': 'document-start',
         license: 'MIT',

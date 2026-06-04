@@ -66,4 +66,16 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
     },
   },
   { name: '旧版单独动态页', url: 'https://t.bilibili.com/385190177693666264' },
+  {
+    name: '直播间',
+    url: 'https://live.bilibili.com/75287',
+    setup: (page) => {
+      page.mouse.wheel(0, 500)
+      const commentWithCount = page
+        .locator('.bili-dyn-action.comment')
+        .filter({ hasText: /^\s*\d+\s*$/ })
+        .first()
+      commentWithCount.click()
+    },
+  },
 ])
