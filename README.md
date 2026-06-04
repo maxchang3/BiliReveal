@@ -29,11 +29,21 @@
 - [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
 
 <details>
-<summary>FireMonkey 等对上下文要求严格的脚本管理器</summary>
+<summary>Lite 版本（FireMonkey 等对沙箱隔离要求严格的脚本管理器 / 需要 Page Context 注入的场景）</summary>
 
-[从 Github Release 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
+我们额外提供了一个 **Lite 版本**。Lite 版本采用运行时无关设计，不依赖 GM API，因此可以运行在更多环境中，而不仅限于传统的用户脚本管理器。
 
-Lite 版本移除了对 GM API 的使用（这意味着「文本替换」功能将不可用），额外添加了 `@inject-into page`（脚本将直接完整注入网页，目前仅在 Firefox 下有效）
+由于移除了 GM API，「文本替换」功能将不可用。同时，Lite 版本额外添加了 `@inject-into page` 配置，使脚本能够直接完整地注入网页上下文中（目前仅 Firefox 支持）。
+
+对于 FireMonkey，由于目前无法通过常规方式兼容运行，因此推荐使用 Lite 版本。
+
+得益于运行时无关的设计，Lite 版本也可以更加灵活地部署到各种环境中，例如：
+
+- FireMonkey；
+- AdGuard 的用户脚本功能；
+- 自定义浏览器扩展；
+
+[从 GitHub Releases 安装 Lite 版本](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.lite.user.js)
 
 </details>
 
