@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/maxchang3/BiliReveal/compare/v2.1.0...v2.2.0) (2026-06-04)
+
+
+### Features
+
+* 支持直播间下 IP 属地获取 ([92c099b](https://github.com/maxchang3/BiliReveal/commit/92c099bd060c4a83371a3873a97a5fbe311f85be))
+
 ## [2.1.0](https://github.com/maxchang3/BiliReveal/compare/v2.0.1...v2.1.0) (2026-05-29)
 
 ### Features
