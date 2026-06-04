@@ -31,7 +31,7 @@
 <details>
 <summary>Lite 版本（FireMonkey 等对沙箱隔离要求严格的脚本管理器 / 需要 Page Context 注入的场景）</summary>
 
-我们额外提供了一个 **Lite 版本**。Lite 版本采用运行时无关设计，不依赖 GM API，因此可以运行在更多环境中，而不仅限于传统的用户脚本管理器。
+我们额外提供了一个 **Lite 版本**。不依赖 GM API（用户脚本的 metadata 在其他环境中会被视作单纯的注释），因此可以运行在更多环境中，而不仅限于传统的用户脚本管理器。
 
 由于移除了 GM API，「文本替换」功能将不可用。同时，Lite 版本额外添加了 `@inject-into page` 配置，使脚本能够直接完整地注入网页上下文中（目前仅 Firefox 支持）。
 
