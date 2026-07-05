@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.0](https://github.com/maxchang3/BiliReveal/compare/v2.2.0...v2.3.0) (2026-07-05)
+
+### Features
+
+- 添加统一日志系统 ([#162](https://github.com/maxchang3/BiliReveal/issues/162)) ([3fb783c](https://github.com/maxchang3/BiliReveal/commit/3fb783c7f3d8e449ac808f9c8872681ed6051e27))
+
+### Bug Fixes
+
+- add more context to error and warning logs ([d6b85b7](https://github.com/maxchang3/BiliReveal/commit/d6b85b75ec081b2e9a32e70dc794e69c67eb21e6))
+- 修复动态主页新旧版判断逻辑 ([b575217](https://github.com/maxchang3/BiliReveal/commit/b575217eeab39823dfcf833d8e90669976f1170b))
+
 ## [2.2.0](https://github.com/maxchang3/BiliReveal/compare/v2.1.0...v2.2.0) (2026-06-04)
 
 ### Features
