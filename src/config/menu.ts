@@ -1,6 +1,6 @@
 import { GM, GM_registerMenuCommand, GM_setValue } from '$'
 import { REPLACEMENTS_KEY, replacements } from './location-replacements'
-import { DEBUG_MODE_KEY, isDebugMode, updateLogMenu } from '../utils'
+import { DEBUG_MODE_KEY, isDebugMode, updateLogMenu } from '@/utils'
 
 const fromError = (error: unknown): string =>
   error instanceof Error ? error.message : String(error)
