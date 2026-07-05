@@ -63,6 +63,14 @@ body:
         1. 进入 '...' 网址
         2. 点击 '....'
   - type: textarea
+    id: debug_log
+    attributes:
+      label: 调试日志（可选）
+      description: >-
+        非必填项。可在脚本菜单中开启「调试模式」并复现问题后，通过菜单「复制本页日志」粘贴到此处。
+        如日志缺失或需要补充信息，建议打开浏览器控制台，检查 userscript 相关的错误日志。
+      placeholder: 请粘贴调试日志内容
+  - type: textarea
     id: console_output
     attributes:
       label: Console 报错信息（可选）

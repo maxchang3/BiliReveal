@@ -1,5 +1,6 @@
 import { isElementLoaded } from '@/utils/dom'
 import { getLocationString } from '@/utils/location'
+import { logger } from '@/utils/'
 import { hookVue3App } from './shims/hook-vue3-app'
 import type { ReplyElement, SubReplyElement } from './types'
 
@@ -26,8 +27,13 @@ const insertLocation = (replyItemEl: HTMLDivElement) => {
   if (!replyInfo) throw new Error('Can not detect reply info')
 
   const locationString = extractLocationFromReplyElement(replyItemEl)
-  if (!locationString || hasLocationInjected(replyInfo)) return
+  if (!locationString) {
+    logger.warn('[IP属地解析] vue3 未携带 IP 数据 (解析为空)')
+    return
+  }
+  if (hasLocationInjected(replyInfo)) return
 
+  logger.incrementIpCount()
   replyInfo.children[0].innerHTML += `&nbsp;&nbsp;${locationString}`
 }
 
@@ -35,6 +41,7 @@ const isReplyItem = (el: Node): el is HTMLDivElement =>
   el instanceof HTMLDivElement && ['reply-item', 'sub-reply-item'].includes(el.className)
 
 export const observeAndInjectComments = async (root?: HTMLElement) => {
+  logger.info('[Strategy] 启用 observeAndInjectComments (Vue3)')
   hookVue3App()
   const targetNode = await isElementLoaded('.reply-list', root)
   const observer = new MutationObserver((mutationsList) => {
@@ -42,13 +49,17 @@ export const observeAndInjectComments = async (root?: HTMLElement) => {
       if (mutation.type !== 'childList') continue
       mutation.addedNodes.forEach((node) => {
         if (!isReplyItem(node)) return
-        insertLocation(node)
-        if (node.className.startsWith('sub')) return
-        const subReplyListEl = node.querySelector('.sub-reply-list')
-        if (!subReplyListEl) return
-        const subReplyList = Array.from(subReplyListEl.children) as HTMLDivElement[]
-        subReplyList.pop()
-        subReplyList.map(insertLocation)
+        try {
+          insertLocation(node)
+          if (node.className.startsWith('sub')) return
+          const subReplyListEl = node.querySelector('.sub-reply-list')
+          if (!subReplyListEl) return
+          const subReplyList = Array.from(subReplyListEl.children) as HTMLDivElement[]
+          subReplyList.pop()
+          subReplyList.forEach(insertLocation)
+        } catch (error) {
+          logger.error('[Hook异常] observeAndInjectComments (Vue3) 处理失败', error)
+        }
       })
     }
   })

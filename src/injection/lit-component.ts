@@ -1,4 +1,5 @@
 import { getLocationString } from '@/utils/location'
+import { logger } from '@/utils/'
 import { unsafeWindow } from '$'
 import type { Reply } from './types'
 
@@ -20,6 +21,7 @@ const updateLocationElement = (thisArg: ActionButtonsRender) => {
   const locationString = getLocationString(thisArg.data)
 
   if (!locationString) {
+    logger.warn('[IP属地解析] lit-component 未携带 IP 数据 (解析为空)')
     if (locationEl) locationEl.remove()
     return
   }
@@ -29,6 +31,7 @@ const updateLocationElement = (thisArg: ActionButtonsRender) => {
     return
   }
 
+  logger.incrementIpCount()
   locationEl = document.createElement('div')
   locationEl.id = 'location'
   locationEl.textContent = locationString
@@ -42,7 +45,11 @@ const createPatch = (ActionButtonsRender: Constructor<ActionButtonsRender>) => {
     args: Parameters<T>,
   ) => {
     const result = Reflect.apply(target, thisArg, args)
-    updateLocationElement(thisArg)
+    try {
+      updateLocationElement(thisArg)
+    } catch (error) {
+      logger.error('[Hook异常] lit-component 处理失败', error)
+    }
     return result
   }
   ActionButtonsRender.prototype.update = new Proxy(ActionButtonsRender.prototype.update, {
@@ -52,6 +59,7 @@ const createPatch = (ActionButtonsRender: Constructor<ActionButtonsRender>) => {
 }
 
 export const hookLit = () => {
+  logger.info('[Strategy] 启用 hookLit (Web Components)')
   const { define: originalDefine } = unsafeWindow.customElements
   const applyHandler = <T extends typeof originalDefine>(
     target: T,

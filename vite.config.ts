@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite-plus'
 import monkey from 'vite-plugin-monkey'
+import strip from '@rollup/plugin-strip'
 import packageJson from './package.json' with { type: 'json' }
 
 const LITE_VERSION = !!process.env.LITE_VERSION
@@ -62,6 +63,10 @@ export default defineConfig({
         LITE_VERSION
           ? userscript.replace(/(\/\/ @grant)/, '// @inject-into  page\n$1')
           : userscript,
+    }),
+    strip({
+      include: ['**/*.ts'],
+      functions: LITE_VERSION ? ['logger.*'] : [],
     }),
   ],
   build: {

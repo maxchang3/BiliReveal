@@ -1,5 +1,6 @@
-import { GM, GM_registerMenuCommand } from '$'
+import { GM, GM_registerMenuCommand, GM_setValue } from '$'
 import { REPLACEMENTS_KEY, replacements } from './location-replacements'
+import { DEBUG_MODE_KEY, isDebugMode, updateLogMenu } from '@/utils'
 
 const fromError = (error: unknown): string =>
   error instanceof Error ? error.message : String(error)
@@ -35,4 +36,15 @@ export const registerConfigMenus = (): void => {
         alert(`更新替换规则失败：${fromError(error)}`)
       })
   })
+
+  // Logger menus
+  const debugMenuText = isDebugMode ? '🟢 关闭调试模式' : '开启调试模式'
+  GM_registerMenuCommand(debugMenuText, () => {
+    GM_setValue(DEBUG_MODE_KEY, !isDebugMode)
+    location.reload()
+  })
+
+  if (isDebugMode) {
+    updateLogMenu()
+  }
 }

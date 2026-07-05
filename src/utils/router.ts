@@ -1,3 +1,5 @@
+import { logger } from './logger'
+
 type RouteAction = (url: string) => void | Promise<void>
 
 interface RouteConstrait {
@@ -26,6 +28,10 @@ export class Router {
     for (const { prefix, action, constrait } of this.routes) {
       if (!url.startsWith(prefix)) continue
       if (constrait.endsWith && !url.endsWith(constrait.endsWith)) continue
+      logger.info(
+        `[Router] 匹配到路由: ${prefix}`,
+        constrait.endsWith ? `(要求以 ${constrait.endsWith} 结尾)` : '',
+      )
       action(url)
       break
     }
