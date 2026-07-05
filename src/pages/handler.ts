@@ -20,7 +20,9 @@ export const handleDynamicHomeRoute = async () => {
   const dynHome = await isElementLoaded('.bili-dyn-home--member')
   const dynBtnText = (dynHome.querySelector('.bili-dyn-sidebar__btn') as HTMLElement | undefined)
     ?.textContent
-  const isNewDyn = dynBtnText ? !dynBtnText.includes('体验新版') : false
+  const isNewDyn = dynBtnText
+    ? dynBtnText.includes('新版反馈') || dynBtnText.includes('回到旧版')
+    : false
   logger.info('[handleDynamicHomeRoute] 动态主页是否新版:', isNewDyn, '按钮文字:', dynBtnText)
   if (isNewDyn) {
     hookLit()
