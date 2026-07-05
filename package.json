@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
+    "@rollup/plugin-strip": "^3.0.4",
     "@types/node": "^25.0.3",
     "dotenv": "^17.4.2",
     "typescript": "^5.9.3",
