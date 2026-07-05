@@ -18,9 +18,7 @@ export const handleDynamicHomeRoute = async () => {
   const dynHome = await isElementLoaded('.bili-dyn-home--member')
   const dynBtnText = (dynHome.querySelector('.bili-dyn-sidebar__btn') as HTMLElement | undefined)
     ?.textContent
-  const isNewDyn = dynBtnText
-    ? dynBtnText.includes('新版反馈') || dynBtnText.includes('回到旧版')
-    : false
+  const isNewDyn = dynBtnText ? !dynBtnText.includes('体验新版') : false
   if (isNewDyn) {
     hookLit()
   } else {
