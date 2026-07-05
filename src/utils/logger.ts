@@ -6,7 +6,7 @@ import {
   GM_info,
 } from '$'
 
-const DEBUG_MODE_KEY = 'bili_reveal_debug_mode'
+export const DEBUG_MODE_KEY = 'bili_reveal_debug_mode'
 const LOG_VERSION = 1
 
 export const isDebugMode = __LITE_VERSION__ ? false : GM_getValue(DEBUG_MODE_KEY, false)
