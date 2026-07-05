@@ -1,6 +1,5 @@
 import {
   GM_getValue,
-  GM_setValue,
   GM_registerMenuCommand,
   GM_unregisterMenuCommand,
   GM_setClipboard,
@@ -8,15 +7,11 @@ import {
 } from '$'
 
 const DEBUG_MODE_KEY = 'bili_reveal_debug_mode'
-const LOGS_KEY = 'bili_reveal_logs'
 const LOG_VERSION = 1
 
 export const isDebugMode = __LITE_VERSION__ ? false : GM_getValue(DEBUG_MODE_KEY, false)
 
-// Clear logs on new page load if debug mode is active
-if (isDebugMode) {
-  GM_setValue(LOGS_KEY, [])
-}
+let memoryLogs: string[] = []
 
 export const logger = {
   log: (level: string, ...args: unknown[]) => {
@@ -30,23 +25,21 @@ export const logger = {
       level === 'error' ? console.error : level === 'warn' ? console.warn : console.log
     consoleMethod(`[BiliReveal][${level.toUpperCase()}]`, ...args)
 
-    // Output to GM storage
     try {
       const MAX_LOGS = 1000
-      let currentLogs = (GM_getValue(LOGS_KEY, []) as string[]) || []
       const time = new Date().toLocaleTimeString()
       const logString = `[${time}] [${level.toUpperCase()}] ${args
         .map((a) => (typeof a === 'object' ? JSON.stringify(a) : String(a)))
         .join(' ')}`
 
-      currentLogs.push(logString)
-      if (currentLogs.length > MAX_LOGS) {
-        currentLogs = currentLogs.slice(-MAX_LOGS)
+      memoryLogs.push(logString)
+      if (memoryLogs.length > MAX_LOGS) {
+        memoryLogs = memoryLogs.slice(-MAX_LOGS)
       }
-      GM_setValue(LOGS_KEY, currentLogs)
+
       updateLogMenu()
     } catch (e) {
-      console.error('Failed to write log to GM', e)
+      console.error('Failed to process log', e)
     }
   },
   debug: (...args: unknown[]) => logger.log('debug', ...args),
@@ -72,8 +65,7 @@ export const updateLogMenu = () => {
   if (menuUpdateTimer) clearTimeout(menuUpdateTimer)
 
   menuUpdateTimer = setTimeout(() => {
-    const currentLogs = (GM_getValue(LOGS_KEY, []) as string[]) || []
-    const count = currentLogs.length
+    const count = memoryLogs.length
 
     if (logMenuId !== undefined) {
       try {
@@ -84,8 +76,7 @@ export const updateLogMenu = () => {
     }
 
     logMenuId = GM_registerMenuCommand(`📄 复制本页日志 (${count})`, () => {
-      const logs = (GM_getValue(LOGS_KEY, []) as string[]) || []
-      if (logs.length === 0) return
+      if (memoryLogs.length === 0) return
 
       const header = [
         `=== BiliReveal Debug Info v${LOG_VERSION}===`,
@@ -99,7 +90,7 @@ export const updateLogMenu = () => {
         '',
       ].join('\n')
 
-      GM_setClipboard(header + logs.join('\n'), 'text')
+      GM_setClipboard(header + memoryLogs.join('\n'), 'text')
     })
   }, 100)
 }
