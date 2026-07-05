@@ -39,7 +39,11 @@ const injectBBComment = (
         `<span class="reply-time">$1</span><span class="reply-location">${location}</span>`,
       )
     } catch (error) {
-      logger.error('[Hook异常] vue-legacy 处理失败', error)
+      logger.error(
+        '[Hook异常] vue-legacy 处理失败',
+        error,
+        `(rpid=${item?.rpid}, hasLocation=${!!item?.reply_control?.location})`,
+      )
       return result
     }
   }

@@ -34,7 +34,13 @@ const serveNewOpusArticle = async (initialState?: InitialState) => {
   }
 
   const authorPub = await isElementLoaded('.opus-module-author__pub')
-  if (!authorPub) return
+  if (!authorPub) {
+    logger.warn(
+      '[article] 未找到 .opus-module-author__pub',
+      `(有 .opus-module-author: ${!!document.querySelector('.opus-module-author')})`,
+    )
+    return
+  }
 
   if (authorPub.querySelector('.opus-module-author__pub__bilireveal')) return
 
