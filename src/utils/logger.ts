@@ -54,6 +54,9 @@ export const logger = {
   warn: (...args: unknown[]) => logger.log('warn', ...args),
   error: (...args: unknown[]) => logger.log('error', ...args),
   incrementIpCount: () => {
+    if (ipInjectCount === 0) {
+      logger.info('[IP属地插入] 首次成功解析并插入 IP 属地')
+    }
     ipInjectCount++
     updateLogMenu()
   },
