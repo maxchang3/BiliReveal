@@ -136,6 +136,12 @@
 
 - 帮助测试 & 提供反馈的朋友们
 
-## Stargazers over time
+## Star History
 
-[![Stargazers over time](https://starchart.cc/maxchang3/Bilibili-Web-Show-IP-Location.svg?variant=adaptive)](https://starchart.cc/maxchang3/Bilibili-Web-Show-IP-Location)
+<a href="https://www.star-history.com/?repos=maxchang3%2Fbilireveal&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=maxchang3/bilireveal&type=date&theme=dark&legend=top-left&sealed_token=K3wSzkbw-hX-BhOXrFbD1xvz3gcoQ9o6NHk4pBFunmKh8kBr22I9RR8DAyfU1n0WzWqAW-KmCPH88zkJCU4v7qeGUMjb7PPxF8oVDRJjiom1mXwtRHaPpVAVw65Arg-dvffe2RNjS4EpBtS2IoMwii1LeJpBnmq7_R70cPX_oZG8DYbm0eOCsaEFeBlx" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=maxchang3/bilireveal&type=date&legend=top-left&sealed_token=K3wSzkbw-hX-BhOXrFbD1xvz3gcoQ9o6NHk4pBFunmKh8kBr22I9RR8DAyfU1n0WzWqAW-KmCPH88zkJCU4v7qeGUMjb7PPxF8oVDRJjiom1mXwtRHaPpVAVw65Arg-dvffe2RNjS4EpBtS2IoMwii1LeJpBnmq7_R70cPX_oZG8DYbm0eOCsaEFeBlx" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=maxchang3/bilireveal&type=date&legend=top-left&sealed_token=K3wSzkbw-hX-BhOXrFbD1xvz3gcoQ9o6NHk4pBFunmKh8kBr22I9RR8DAyfU1n0WzWqAW-KmCPH88zkJCU4v7qeGUMjb7PPxF8oVDRJjiom1mXwtRHaPpVAVw65Arg-dvffe2RNjS4EpBtS2IoMwii1LeJpBnmq7_R70cPX_oZG8DYbm0eOCsaEFeBlx" />
+ </picture>
+</a>
