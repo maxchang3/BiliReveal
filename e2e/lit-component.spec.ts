@@ -33,6 +33,12 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
     verify: async (page) => {
       const readInfo = page.locator('.opus-module-author__pub__bilireveal')
       await expect(readInfo).toContainText('上海', { timeout: 10000 })
+      await page.locator('.opus-module-author__pub').evaluate((element) => {
+        const replacement = element.cloneNode(true) as Element
+        replacement.querySelector('.opus-module-author__pub__bilireveal')?.remove()
+        element.replaceWith(replacement)
+      })
+      await expect(readInfo).toContainText('上海', { timeout: 10000 })
     },
   },
   {

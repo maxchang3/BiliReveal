@@ -22,6 +22,8 @@ const fetchArticleViewInfo = async (cv: string | number): Promise<ReadViewInfo |
   }
 }
 
+let opusLocationObserver: MutationObserver | undefined
+
 const serveNewOpusArticle = async (initialState?: InitialState) => {
   // 没有这些参数说明不是专栏文章的 opus
   const basic = initialState?.detail?.basic
@@ -33,22 +35,29 @@ const serveNewOpusArticle = async (initialState?: InitialState) => {
     return
   }
 
-  const authorPub = await isElementLoaded('.opus-module-author__pub')
-  if (!authorPub) {
-    logger.warn(
-      '[article] 未找到 .opus-module-author__pub',
-      `(有 .opus-module-author: ${!!document.querySelector('.opus-module-author')})`,
-    )
-    return
+  const location = viewinfo.location
+  const insertLocation = () => {
+    const currentAuthorPub = document.querySelector('.opus-module-author__pub')
+    if (!currentAuthorPub) return
+    const text = `${location} ·\u00a0`
+    const existingLocation = currentAuthorPub.querySelector('.opus-module-author__pub__bilireveal')
+    if (existingLocation) {
+      if (existingLocation.textContent !== text) existingLocation.textContent = text
+      return
+    }
+
+    logger.incrementIpCount()
+    const locationEl = document.createElement('span')
+    locationEl.textContent = text
+    locationEl.className = 'opus-module-author__pub__bilireveal'
+    currentAuthorPub.insertAdjacentElement('afterbegin', locationEl)
   }
 
-  if (authorPub.querySelector('.opus-module-author__pub__bilireveal')) return
-
-  logger.incrementIpCount()
-  const locationEl = document.createElement('span')
-  locationEl.innerHTML = `${viewinfo.location} &middot;&nbsp;`
-  locationEl.className = 'opus-module-author__pub__bilireveal'
-  authorPub.insertAdjacentElement('afterbegin', locationEl)
+  // 页面 hydration 会替换作者区域；复用已获取的属地，恢复被移除的节点。
+  opusLocationObserver?.disconnect()
+  opusLocationObserver = new MutationObserver(insertLocation)
+  opusLocationObserver.observe(document, { childList: true, subtree: true })
+  insertLocation()
 }
 
 export const injectArticleLocation = async (url: string) => {
