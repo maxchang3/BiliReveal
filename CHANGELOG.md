@@ -5,7 +5,7 @@
 ### Features
 
 - localize userscript names and descriptions ([8ef91a0](https://github.com/maxchang3/BiliReveal/commit/8ef91a0bf2f52fe162fe46b1d75434afb9c53bf1))
-- 支持 i18n 简体和繁体中文 ([#166](https://github.com/maxchang3/BiliReveal/issues/166)) ([7ee7706](https://github.com/maxchang3/BiliReveal/commit/7ee770629893fb30a9cc59bb16c2afeccd6a942f))
+- 支持 i18n 页面 ([#166](https://github.com/maxchang3/BiliReveal/issues/166)) ([7ee7706](https://github.com/maxchang3/BiliReveal/commit/7ee770629893fb30a9cc59bb16c2afeccd6a942f))
 
 ### Bug Fixes
 
