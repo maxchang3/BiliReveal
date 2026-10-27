@@ -7,6 +7,9 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
   { name: '新列表', url: 'https://www.bilibili.com/list/8047632' },
   { name: '新版单独动态页', url: 'https://www.bilibili.com/opus/1108038404888592390' },
   { name: '新番剧播放页', url: 'https://www.bilibili.com/bangumi/play/ss29325' },
+  { name: '视频（i18n 简体中文）', url: 'https://www.bilibili.com/zh-Hans/video/BV1tx411w7Ay' },
+  { name: '新列表（i18n 简体）', url: 'https://www.bilibili.com/zh-Hans/list/8047632' },
+  { name: '新番剧播放页（i18n 简体）', url: 'https://www.bilibili.com/bangumi/play/ss29325' },
   {
     name: '课程页',
     url: 'https://www.bilibili.com/cheese/play/ss66',
@@ -49,6 +52,14 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
   {
     name: '个人空间（首页->动态页)',
     url: 'https://space.bilibili.com/8047632',
+    setup: (page) => {
+      page.locator('.nav-tab__item').nth(1).click()
+      page.locator('.bili-dyn-action.comment').first().click()
+    },
+  },
+  {
+    name: '个人空间（首页->动态页)（i18n 简体中文）',
+    url: 'https://space.bilibili.com/zh-Hans/8047632',
     setup: (page) => {
       page.locator('.nav-tab__item').nth(1).click()
       page.locator('.bili-dyn-action.comment').first().click()

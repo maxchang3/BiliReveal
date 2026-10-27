@@ -7,7 +7,8 @@ const router = new Router()
 registerRoutes(router)
 
 const { origin, pathname } = new URL(location.href)
-const urlWithoutQueryOrHash = `${origin}${pathname}`
+const normalizedPathname = pathname.replace(/^\/zh-H(?:ans|ant)(?=\/)/, '')
+const urlWithoutQueryOrHash = `${origin}${normalizedPathname}`
 
 router.match(urlWithoutQueryOrHash)
 
