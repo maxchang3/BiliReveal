@@ -2,16 +2,14 @@
 
 ## [2.4.0](https://github.com/maxchang3/BiliReveal/compare/v2.3.0...v2.4.0) (2026-10-27)
 
-
 ### Features
 
-* localize userscript names and descriptions ([8ef91a0](https://github.com/maxchang3/BiliReveal/commit/8ef91a0bf2f52fe162fe46b1d75434afb9c53bf1))
-* 支持 i18n 简体和繁体中文 ([#166](https://github.com/maxchang3/BiliReveal/issues/166)) ([7ee7706](https://github.com/maxchang3/BiliReveal/commit/7ee770629893fb30a9cc59bb16c2afeccd6a942f))
-
+- localize userscript names and descriptions ([8ef91a0](https://github.com/maxchang3/BiliReveal/commit/8ef91a0bf2f52fe162fe46b1d75434afb9c53bf1))
+- 支持 i18n 简体和繁体中文 ([#166](https://github.com/maxchang3/BiliReveal/issues/166)) ([7ee7706](https://github.com/maxchang3/BiliReveal/commit/7ee770629893fb30a9cc59bb16c2afeccd6a942f))
 
 ### Bug Fixes
 
-* resolve TypeScript configuration and lint issues ([0b6a090](https://github.com/maxchang3/BiliReveal/commit/0b6a09041904e3b080b3d3e6bd6cb9f1594ffa4a))
+- resolve TypeScript configuration and lint issues ([0b6a090](https://github.com/maxchang3/BiliReveal/commit/0b6a09041904e3b080b3d3e6bd6cb9f1594ffa4a))
 
 ## [2.3.0](https://github.com/maxchang3/BiliReveal/compare/v2.2.0...v2.3.0) (2026-07-05)
 
