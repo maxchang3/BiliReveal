@@ -48,8 +48,19 @@ const getUserscriptContent = () => {
 
 export const setupTestEnv = async (page: Page, context: BrowserContext) => {
   await context.addCookies(getBiliCookies())
+  const userscript = getUserscriptContent()
+  const matches = [...userscript.matchAll(/^\/\/ @match\s+(.+)$/gm)].map(
+    ([, pattern]) =>
+      '^' +
+      pattern
+        .split('*')
+        .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+        .join('.*') +
+      '$',
+  )
   // 多个 addInitScript 的执行顺序不确定，脚本必须在 unsafeWindow 初始化后执行。
+  // 同时模拟脚本管理器的匹配行为，防止直接注入掩盖 @match 漏配。
   await page.addInitScript({
-    content: `(${userscriptShim.toString()})();\n(${setAutoplayFalse.toString()})();\n${getUserscriptContent()}`,
+    content: `if (${JSON.stringify(matches)}.some(pattern => new RegExp(pattern).test(location.href))) {\n(${userscriptShim.toString()})();\n(${setAutoplayFalse.toString()})();\n${userscript}\n}`,
   })
 }

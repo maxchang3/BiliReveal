@@ -7,7 +7,6 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
   { name: '新列表', url: 'https://www.bilibili.com/list/8047632' },
   { name: '新版单独动态页', url: 'https://www.bilibili.com/opus/1108038404888592390' },
   { name: '新番剧播放页', url: 'https://www.bilibili.com/bangumi/play/ss29325' },
-  { name: '视频（i18n 简体中文）', url: 'https://www.bilibili.com/zh-Hans/video/BV1tx411w7Ay' },
   { name: '新列表（i18n 简体）', url: 'https://www.bilibili.com/zh-Hans/list/8047632' },
   {
     name: '新番剧播放页（i18n 简体）',

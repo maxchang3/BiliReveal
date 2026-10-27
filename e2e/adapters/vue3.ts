@@ -7,15 +7,15 @@ export class Vue3Adapter implements BiliCommentAdapter {
 
   constructor(private page: Page) {}
 
-  getMainComment(index: number = 0): Locator {
-    return this.page.locator('.reply-item').nth(index)
+  getMainComment(): Locator {
+    return this.page.locator('.reply-item').first()
   }
 
   getLocationTag(commentLocator: Locator): Locator {
     return commentLocator.locator('.reply-time').first()
   }
 
-  async clickSort(page: Page): Promise<void> {
-    await page.locator('.time-sort').click()
+  async clickSort(): Promise<void> {
+    await this.page.locator('.time-sort').click()
   }
 }

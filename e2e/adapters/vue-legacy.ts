@@ -7,15 +7,15 @@ export class VueLegacyAdapter implements BiliCommentAdapter {
 
   constructor(private page: Page) {}
 
-  getMainComment(index: number = 0): Locator {
-    return this.page.locator('.list-item.reply-wrap:not(:has(.stick))').nth(index)
+  getMainComment(): Locator {
+    return this.page.locator('.list-item.reply-wrap:not(:has(.stick))').first()
   }
 
   getLocationTag(commentLocator: Locator): Locator {
     return commentLocator.locator('.info').first()
   }
 
-  async clickSort(page: Page): Promise<void> {
-    await page.locator('.new-sort').click()
+  async clickSort(): Promise<void> {
+    await this.page.locator('.new-sort').click()
   }
 }

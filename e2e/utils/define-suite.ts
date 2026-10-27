@@ -52,10 +52,10 @@ export function defineTestSuite(
         await commentApp.scrollIntoViewIfNeeded()
 
         // 按最新排序
-        await adapter.clickSort(page)
+        await adapter.clickSort()
 
         // 获取第一条评论的 IP 属地
-        const firstComment = adapter.getMainComment(0)
+        const firstComment = adapter.getMainComment()
         const location = adapter.getLocationTag(firstComment)
         await expect(location).toHaveText(adapter.locationPattern, { timeout: 10000 })
 
