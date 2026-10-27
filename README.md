@@ -15,7 +15,7 @@
 
 - **浏览器**：最新版 Chrome / Edge / Firefox / Safari 等支持 [扩展 API](https://developer.chrome.google.cn/docs/extensions) 的现代浏览器。
 - **用户脚本管理器**：**推荐**
-  - Chrome/Edge/Firefox： [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)
+  - Chrome/Edge/Firefox： [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/) 或 [ScriptCat](https://scriptcat.org/)
   - Safari： [Stay](https://github.com/shenruisi/Stay)（主要功能免费）或 [Tampermonkey](https://apps.apple.com/app/tampermonkey/id6738342400)（付费）。
 
 > [!TIP]
@@ -23,7 +23,7 @@
 
 ## 安装方式
 
-推荐的用户脚本管理器（Tampermonkey、Violentmonkey、Stay 等）：
+推荐的用户脚本管理器（Tampermonkey、ScriptCat、Violentmonkey、Stay 等）：
 
 - [从 Greasy Fork 安装](https://greasyfork.org/scripts/466815)
 - [从 Github Release 安装](https://github.com/MaxChang3/Bilibili-Web-Show-IP-Location/releases/latest/download/bilireveal.user.js)
