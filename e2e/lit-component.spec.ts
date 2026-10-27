@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test'
 import { LitComponentAdapter } from './adapters'
-import { defineTestSuite } from './utils'
+import { defineTestSuite, openDynamicComments } from './utils'
 
 defineTestSuite('Lit Component', LitComponentAdapter, [
   { name: '视频', url: 'https://www.bilibili.com/video/BV1tx411w7Ay' },
@@ -9,24 +9,19 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
   { name: '新番剧播放页', url: 'https://www.bilibili.com/bangumi/play/ss29325' },
   { name: '视频（i18n 简体中文）', url: 'https://www.bilibili.com/zh-Hans/video/BV1tx411w7Ay' },
   { name: '新列表（i18n 简体）', url: 'https://www.bilibili.com/zh-Hans/list/8047632' },
-  { name: '新番剧播放页（i18n 简体）', url: 'https://www.bilibili.com/bangumi/play/ss29325' },
+  {
+    name: '新番剧播放页（i18n 简体）',
+    url: 'https://www.bilibili.com/zh-Hans/bangumi/play/ss29325',
+  },
   {
     name: '课程页',
     url: 'https://www.bilibili.com/cheese/play/ss66',
-    setup: (page) => {
-      page.locator('.comment-tab').click()
-    },
+    setup: (page) => page.locator('.comment-tab').click(),
   },
   {
     name: '话题页',
     url: 'https://www.bilibili.com/v/topic/detail?topic_id=1332080',
-    setup: (page) => {
-      const commentWithCount = page
-        .locator('.bili-dyn-action.comment')
-        .filter({ hasText: /^\s*\d+\s*$/ })
-        .first()
-      commentWithCount.click()
-    },
+    setup: openDynamicComments,
   },
   {
     name: '节日页（拜年祭）',
@@ -52,41 +47,31 @@ defineTestSuite('Lit Component', LitComponentAdapter, [
   {
     name: '个人空间（首页->动态页)',
     url: 'https://space.bilibili.com/8047632',
-    setup: (page) => {
-      page.locator('.nav-tab__item').nth(1).click()
-      page.locator('.bili-dyn-action.comment').first().click()
+    setup: async (page) => {
+      await page.locator('.nav-tab__item').nth(1).click()
+      await openDynamicComments(page)
     },
   },
   {
     name: '个人空间（首页->动态页)（i18n 简体中文）',
     url: 'https://space.bilibili.com/zh-Hans/8047632',
-    setup: (page) => {
-      page.locator('.nav-tab__item').nth(1).click()
-      page.locator('.bili-dyn-action.comment').first().click()
+    setup: async (page) => {
+      await page.locator('.nav-tab__item').nth(1).click()
+      await openDynamicComments(page)
     },
   },
   {
     name: '动态主页',
     url: 'https://t.bilibili.com/',
-    setup: (page) => {
-      const commentWithCount = page
-        .locator('.bili-dyn-action.comment')
-        .filter({ hasText: /^\s*\d+\s*$/ })
-        .first()
-      commentWithCount.click()
-    },
+    setup: openDynamicComments,
   },
   { name: '旧版单独动态页', url: 'https://t.bilibili.com/385190177693666264' },
   {
     name: '直播间',
     url: 'https://live.bilibili.com/75287',
-    setup: (page) => {
-      page.mouse.wheel(0, 500)
-      const commentWithCount = page
-        .locator('.bili-dyn-action.comment')
-        .filter({ hasText: /^\s*\d+\s*$/ })
-        .first()
-      commentWithCount.click()
+    setup: async (page) => {
+      await page.mouse.wheel(0, 500)
+      await openDynamicComments(page)
     },
   },
 ])

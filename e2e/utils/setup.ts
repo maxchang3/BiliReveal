@@ -48,7 +48,8 @@ const getUserscriptContent = () => {
 
 export const setupTestEnv = async (page: Page, context: BrowserContext) => {
   await context.addCookies(getBiliCookies())
-  await page.addInitScript(setAutoplayFalse)
-  await page.addInitScript(userscriptShim)
-  await page.addInitScript(getUserscriptContent())
+  // 多个 addInitScript 的执行顺序不确定，脚本必须在 unsafeWindow 初始化后执行。
+  await page.addInitScript({
+    content: `(${userscriptShim.toString()})();\n(${setAutoplayFalse.toString()})();\n${getUserscriptContent()}`,
+  })
 }
