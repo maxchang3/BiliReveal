@@ -1,10 +1,8 @@
+import { existsSync } from 'node:fs'
 import { defineConfig, devices } from '@playwright/test'
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-import 'dotenv/config'
+// CI may supply environment variables without a local .env file.
+if (existsSync('.env')) process.loadEnvFile()
 
 /**
  * See https://playwright.dev/docs/test-configuration.

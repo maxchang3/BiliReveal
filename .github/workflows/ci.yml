@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.2
         with:
           node-version: '22'
           cache: true

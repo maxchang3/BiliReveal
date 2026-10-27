@@ -39,7 +39,7 @@ jobs:
           ref: ${{ needs.release-please.outputs.pr_branch }}
           fetch-depth: 0
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.2
         with:
           node-version: 24
           cache: true
@@ -74,7 +74,7 @@ jobs:
         with:
           ref: ${{ needs.release-please.outputs.tag_name }}
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.2
         with:
           node-version: 24
           cache: true
