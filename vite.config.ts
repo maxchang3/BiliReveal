@@ -3,8 +3,17 @@ import { defineConfig } from 'vite-plus'
 import monkey from 'vite-plugin-monkey'
 import strip from '@rollup/plugin-strip'
 import packageJson from './package.json' with { type: 'json' }
+import { SUPPORTED_LOCALES } from './src/utils/locale'
 
 const LITE_VERSION = !!process.env.LITE_VERSION
+
+const LOCALIZED_PAGE_MATCHES = [
+  'https://www.bilibili.com/video/*',
+  'https://www.bilibili.com/list/*',
+  'https://www.bilibili.com/bangumi/play/*',
+  'https://www.bilibili.com/v/topic/detail/*',
+  'https://manga.bilibili.com/detail/*',
+]
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,21 +46,22 @@ export default defineConfig({
         namespace: 'http://zhangmaimai.com',
         author: 'MaxChang3',
         match: [
-          'https://www.bilibili.com/video/*',
-          'https://www.bilibili.com/list/*',
-          'https://www.bilibili.com/bangumi/play/*',
           'https://t.bilibili.com/*',
           'https://www.bilibili.com/opus/*',
           'https://space.bilibili.com/*',
-          'https://www.bilibili.com/v/topic/detail/*',
           'https://www.bilibili.com/cheese/play/*',
           'https://www.bilibili.com/festival/*',
           'https://www.bilibili.com/blackboard/*',
           'https://www.bilibili.com/blackroom/ban/*',
           'https://www.bilibili.com/read/*',
-          'https://manga.bilibili.com/detail/*',
           'https://www.bilibili.com/v/topic/detail*',
           'https://live.bilibili.com/*',
+          ...LOCALIZED_PAGE_MATCHES.flatMap((pattern) => [
+            pattern,
+            ...SUPPORTED_LOCALES.map((locale) =>
+              pattern.replace('.bilibili.com/', `.bilibili.com/${locale}/`),
+            ),
+          ]),
         ],
         'run-at': 'document-start',
         license: 'MIT',

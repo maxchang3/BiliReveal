@@ -16,17 +16,11 @@ export const handleSpaceHomeRoute = async () => {
   dyanmicTab.addEventListener('click', hookLit, { once: true })
 }
 
-export const handleDynamicHomeRoute = async () => {
-  const dynHome = await isElementLoaded('.bili-dyn-home--member')
-  const dynBtnText = (dynHome.querySelector('.bili-dyn-sidebar__btn') as HTMLElement | undefined)
-    ?.textContent
-  const isNewDyn = dynBtnText ? !dynBtnText.includes('体验新版') : false
-  logger.info('[handleDynamicHomeRoute] 动态主页是否新版:', isNewDyn, '按钮文字:', dynBtnText)
-  if (isNewDyn) {
-    hookLit()
-  } else {
-    hookBBComment()
-  }
+export const handleDynamicHomeRoute = () => {
+  // 提前挂接两种评论组件，按页面实际加载的组件生效，避免依赖本地化按钮文案。
+  logger.info('[handleDynamicHomeRoute] 挂接新旧版动态评论组件')
+  hookLit()
+  hookBBComment()
 }
 
 export const handleDynamicItemRoute = async () => {
