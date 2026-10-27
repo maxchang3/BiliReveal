@@ -12,7 +12,7 @@ export const isElementLoaded = async (
       return resolve(element)
     }
     logger.debug(`[DOM] 等待元素渲染: ${selector}`)
-    const observer = new MutationObserver((_) => {
+    const observer = new MutationObserver(() => {
       const element = getElement()
       if (!element) return
       logger.debug(`[DOM] 元素就绪 (异步): ${selector}`)

@@ -18,7 +18,7 @@ defineTestSuite('Vue Legacy', VueLegacyAdapter, [
         .locator('.bili-dyn-action.comment')
         .filter({ hasText: /^\s*\d+\s*$/ })
         .first()
-      commentWithCount.click()
+      void commentWithCount.click()
     },
   },
 ])
