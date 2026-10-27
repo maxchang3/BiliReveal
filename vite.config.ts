@@ -4,6 +4,7 @@ import monkey from 'vite-plugin-monkey'
 import strip from '@rollup/plugin-strip'
 import packageJson from './package.json' with { type: 'json' }
 import { SUPPORTED_LOCALES } from './src/utils/locale'
+import { createUserscriptMetadata } from './build/userscript-metadata'
 
 const LITE_VERSION = !!process.env.LITE_VERSION
 
@@ -44,9 +45,7 @@ export default defineConfig({
     monkey({
       entry: 'src/main.ts',
       userscript: {
-        name: 'BiliReveal - 哔哩哔哩网页版显示 IP 属地' + (LITE_VERSION ? ' (Lite)' : ''),
-        description:
-          '我不喜欢 IP 属地，但是你手机都显示了，为什么电脑不显示呢？在哔哩哔哩网页版大部分场景中显示 IP 属地。',
+        ...createUserscriptMetadata(LITE_VERSION),
         icon: 'https://www.bilibili.com/favicon.ico',
         namespace: 'http://zhangmaimai.com',
         author: 'MaxChang3',
